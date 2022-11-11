@@ -22,6 +22,7 @@ public class TriggerDecoy : MonoBehaviour
             Debug.Log("started");
 
             Destroy(gameObject, 1);
+            
         }
     }
 }

@@ -135,16 +135,28 @@ PrefabInstance:
       value: goal
       objectReference: {fileID: 0}
     - target: {fileID: 3768611599391478343, guid: fdcf21ac5167d154ab2168215939aacb, type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768611599391478343, guid: fdcf21ac5167d154ab2168215939aacb, type: 3}
+      propertyPath: m_Size.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768611599391478343, guid: fdcf21ac5167d154ab2168215939aacb, type: 3}
+      propertyPath: m_Size.z
+      value: 0.9999999
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768611599391478343, guid: fdcf21ac5167d154ab2168215939aacb, type: 3}
       propertyPath: m_Center.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3768611599391478343, guid: fdcf21ac5167d154ab2168215939aacb, type: 3}
       propertyPath: m_Center.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3768611599391478343, guid: fdcf21ac5167d154ab2168215939aacb, type: 3}
       propertyPath: m_Center.z
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3768611599391478343, guid: fdcf21ac5167d154ab2168215939aacb, type: 3}
       propertyPath: m_IsTrigger
@@ -160,15 +172,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9170611496999897457, guid: fdcf21ac5167d154ab2168215939aacb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3
+      value: -3.5
       objectReference: {fileID: 0}
     - target: {fileID: 9170611496999897457, guid: fdcf21ac5167d154ab2168215939aacb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 9170611496999897457, guid: fdcf21ac5167d154ab2168215939aacb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6
+      value: -6.5
       objectReference: {fileID: 0}
     - target: {fileID: 9170611496999897457, guid: fdcf21ac5167d154ab2168215939aacb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -215,7 +227,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 76c36e3668a67f74f9b45f6785954c4d, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 59253c7c51912d64b9c8bdfe27127431, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

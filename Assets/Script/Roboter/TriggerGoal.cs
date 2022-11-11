@@ -14,13 +14,15 @@ public class TriggerGoal : MonoBehaviour
 
         if(other.name == Roboter.name)
         {
+            audioData = GetComponent<AudioSource>();
+            audioData.Play(0);
+            Debug.Log("started");
+            
             // when roboter collides with goal
             Debug.Log("Victory!!!!");
 
 
-            audioData = GetComponent<AudioSource>();
-            audioData.Play(0);
-            Debug.Log("started");
+            
 
         }
 
