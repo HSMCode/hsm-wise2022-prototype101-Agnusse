@@ -20,6 +20,8 @@ public class TriggerGoal : MonoBehaviour
             
             // when roboter collides with goal
             Debug.Log("Victory!!!!");
+            ParticleSystem ps = GetComponent<ParticleSystem>();
+            ps.Play();
 
 
             
