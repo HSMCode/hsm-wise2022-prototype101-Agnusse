@@ -4,68 +4,39 @@ using UnityEngine;
 
 public class Dice : MonoBehaviour
 {
+   //Audio
+    AudioSource audioData;
+    
     //Variables
     public int diceNumber;
-    
-    // winning numbers
-    // public int firstWin = 1;
-    // public int secondWin = 3;
-    // public int thirdWin = 6;
-
-
-    public int [] luckyNumbers ={ 1,3,6};
-
-
-    // public int [] luckyNumbers= new int [3];
-    // Start is called before the first frame update
-    void Start()
-    {
-    //    luckyNumbers[0] = 1;
-    //    luckyNumbers[1] = 3;
-    //    luckyNummbers[2] = 6;
-    }
+    public int [] luckyNumbers ={1,10,11,21,22,31,33,44};
 
     // Update is called once per frame
     void Update()
     {
-
+        //press space to throw dice
         if (Input.GetKeyDown("space")) {
-            diceNumber = Random.Range(1, 7);
+            diceNumber = Random.Range(1, 51);
 
-        Debug.Log ("Dice number " + diceNumber); 
+            Debug.Log ("Dice number " + diceNumber); 
 
-
-          for (int i = 0; i < luckyNumbers.Length ; i++)
+            //check again until i=0; so all of the numbers in the array
+            for (int i = 0; i < luckyNumbers.Length ; i++)
             {
-            // do this
-            Debug.Log("for loop: " + i);
-            
+            // then do this
+              // if lucky number is drawn
+              if (diceNumber == luckyNumbers[i])  {
+                 Debug.Log ( " Congratulations!!! You won with the lucky number  "  + diceNumber + " in loop " + i);
+                 // play audio
+                 audioData = GetComponent<AudioSource>();
+                 audioData.Play(0);
 
-            if (diceNumber == luckyNumbers[i])  {
-                Debug.Log ( "You won with the lucky number  "  + diceNumber);
-
-             }
-             else {
-                Debug.Log ("You lost");
+              }
+              //otherwise you lost
+              else {
+                  Debug.Log ("Sorry! You lost with the number " + diceNumber + " in loop " + i);
               }
             }
-            
-            
-
-            // if (diceNumber == luckyNumbers[0] || diceNumber == luckyNumbers[1] || diceNumber ==luckyNumbers[2] ) {
-            //     Debug.Log ( "You won with the lucky number  "  + diceNumber);
-            // }
-            // else if (diceNumber == secondWin){
-            //     Debug.Log ( "You won with the lucky number  " + secondWin);
-            // }
-            // else if (diceNumber == thirdWin){
-            //     Debug.Log ( "You won with the lucky number  " + thirdWin);
-            // }
-            
-            // else {
-            //     Debug.Log ("You lost");
-            //   }
-        
-           }
+        }
     }
 }
