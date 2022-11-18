@@ -135,8 +135,8 @@ GameObject:
   - component: {fileID: 1456526693}
   - component: {fileID: 1456526692}
   - component: {fileID: 1456526691}
-  - component: {fileID: 1456526690}
   - component: {fileID: 1456526695}
+  - component: {fileID: 1456526690}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -153,11 +153,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1456526689}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d69efc6d3c8a13c438db21213fbf6447, type: 3}
+  m_Script: {fileID: 11500000, guid: d2465257da254c44f8a9997da75708eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   diceNumber: 0
   luckyNumbers: 010000000a0000000b00000015000000160000001f000000210000002c000000
+  luckyNumberWasDrawn: 0
 --- !u!65 &1456526691
 BoxCollider:
   m_ObjectHideFlags: 0
