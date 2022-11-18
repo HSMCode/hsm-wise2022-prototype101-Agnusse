@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 538ba0330c1e6374abd6da9c8aae42a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Roboter: {fileID: 0}
+  Roboter: {fileID: 8541125957404711960, guid: f25d7da1c210737419f56dd390df1620, type: 3}
 --- !u!82 &4522259264010498258
 AudioSource:
   m_ObjectHideFlags: 0

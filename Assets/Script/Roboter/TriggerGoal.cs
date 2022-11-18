@@ -8,6 +8,12 @@ public class TriggerGoal : MonoBehaviour
 
     AudioSource audioData;
     
+    void Start()
+    {
+        
+         transform.Translate(Random.Range(-10,10),0,Random.Range(-10,10));
+        
+    }
     private void OnTriggerEnter (Collider other)
     {
         Debug.Log (other.name + " just hit " + gameObject.name);
@@ -20,6 +26,9 @@ public class TriggerGoal : MonoBehaviour
             
             // when roboter collides with goal
             Debug.Log("Victory!!!!");
+
+
+            //play particles 
             ParticleSystem ps = GetComponent<ParticleSystem>();
             ps.Play();
 
