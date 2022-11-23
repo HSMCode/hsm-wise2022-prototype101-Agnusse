@@ -17,31 +17,20 @@ public class GenerateDecoy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //SpawningDecoy();
-        // InvokeRepeating("SpawningDecoy", startDelay, spawnInterval);
+        SpawningDecoyParam(5);
     }
 
     // Update is called once per frame
     void Update()
     {
-         if(Input.GetKeyDown("space"))
-        {
-            SpawningDecoyParam(5);
-
-            // for (int i = 0; i< spawnAmount; i++)
-            // {
-            // Vector3 spawnPosition = new Vector3(Random.Range(-spawnPositionX,spawnPositionX),0,Random.Range(-spawnPositionZ,spawnPositionZ));
-
-            // Instantiate (Decoy, spawnPosition, transform.rotation);
-            // }
-        }
+        
     }
     public void SpawningDecoyParam(int amount)
     {
         for (int i = 0; i< amount; i++)
             {
             // generate random spawn position between the defined values
-            Vector3 spawnPosition = new Vector3(Random.Range(-spawnPositionX,spawnPositionX),0,Random.Range(-spawnPositionZ,spawnPositionZ));
+            Vector3 spawnPosition = new Vector3 (Mathf.Round(Random.Range(-spawnPositionX,spawnPositionX)),0,Mathf.Round(Random.Range(-spawnPositionZ,spawnPositionZ)));
             
             // instantiate decoy
             Instantiate (Decoy, spawnPosition, transform.rotation);

@@ -32,6 +32,9 @@ public class Dice : MonoBehaviour
                  // play audio
                  audioData = GetComponent<AudioSource>();
                  audioData.Play(0);
+                 // play particle system
+                 ParticleSystem ps = GetComponent<ParticleSystem>();
+                 ps.Play();
 
               }
               //otherwise you lost

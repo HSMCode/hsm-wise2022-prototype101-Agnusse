@@ -15,14 +15,11 @@ public class TriggerDecoy : MonoBehaviour
         if(other.name == Roboter.name)
         {
             // when roboter collides with decoy
-            Debug.Log("Decoy was hit");
-
             audioData = GetComponent<AudioSource>();
             audioData.Play(0);
-            Debug.Log("started");
 
-            Destroy(gameObject, 1);
-            
+            // destroy Roboter after 1 second
+            Destroy(gameObject, 1);   
         }
     }
 }
