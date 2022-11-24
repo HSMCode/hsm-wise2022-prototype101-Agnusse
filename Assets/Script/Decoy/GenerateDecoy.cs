@@ -30,7 +30,7 @@ public class GenerateDecoy : MonoBehaviour
         for (int i = 0; i< amount; i++)
             {
             // generate random spawn position between the defined values
-            Vector3 spawnPosition = new Vector3 (Mathf.Round(Random.Range(-spawnPositionX,spawnPositionX)),0,Mathf.Round(Random.Range(-spawnPositionZ,spawnPositionZ)));
+            Vector3 spawnPosition = new Vector3 (Mathf.Floor(Random.Range(-spawnPositionX,spawnPositionX)),0,Mathf.Floor(Random.Range(-spawnPositionZ,spawnPositionZ)));
             
             // instantiate decoy
             Instantiate (Decoy, spawnPosition, transform.rotation);

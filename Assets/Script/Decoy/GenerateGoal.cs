@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class GenerateGoal : MonoBehaviour
 {
-    
+
     void Start()
      {
-        transform.Translate(Mathf.Round(Random.Range(-10,-5 + 5, 10)),0,Mathf.Round(Random.Range(-10,-5 + 5,10)));
+        transform.Translate(Random.Range(-10, 10),0,Random.Range(-10,10));
      } 
 }
