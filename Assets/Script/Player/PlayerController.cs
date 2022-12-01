@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public GameObject Ground;
     public float horizontalInput;
     public float forwardInput;
     public float speed;
     public float turnSpeed;
     public Vector3 force;
+    public bool isJumping = false;
 
     private Animator _playerAnim;
     private Rigidbody _playerRb;
@@ -23,6 +25,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //move and rotate Player
         horizontalInput= Input.GetAxis("Horizontal");
         forwardInput= Input.GetAxis("Vertical");
 
@@ -31,6 +34,7 @@ public class PlayerController : MonoBehaviour
 
         _playerAnim.SetFloat("Run", forwardInput);
 
+        //assign Animations
         if(forwardInput != 0  || horizontalInput != 0)
         {
             _playerAnim.SetBool("Walk", true);
@@ -40,10 +44,24 @@ public class PlayerController : MonoBehaviour
         {
             _playerAnim.SetBool("Walk", false);
         }
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            _playerRb.AddForce(force, ForceMode.Impulse);
-            _playerAnim.SetTrigger("Jump");
+            if (!isJumping)
+            {
+                _playerRb.AddForce(force, ForceMode.Impulse);
+                _playerAnim.SetTrigger("Jump");
+                isJumping = true;
+            }
+            
+        }
+    }
+
+     private void OnTriggerEnter (Collider other)
+    {
+        if(other.name == Ground.name)
+        {
+          isJumping = false; 
         }
     }
 }
