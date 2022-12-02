@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public GameObject Ground;
     public float horizontalInput;
     public float forwardInput;
     public float speed;
     public float turnSpeed;
-    public Vector3 force;
-
-
+    public float force;
+    public float forceDown;
+    public float gravityModifier;
+    public bool isJumping;
+    public bool isFalling;
 
     public bool isOnGround = false;
 
@@ -23,6 +24,8 @@ public class PlayerController : MonoBehaviour
     {
         _playerAnim = GetComponent<Animator>();
         _playerRb = GetComponent<Rigidbody>();
+
+        Physics.gravity *= gravityModifier;
     }
 
     // Update is called once per frame
@@ -48,20 +51,52 @@ public class PlayerController : MonoBehaviour
             _playerAnim.SetBool("Walk", false);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space)&& isOnGround)
+        //player is jumping press space
+        if (Input.GetKeyDown(KeyCode.Space) && isOnGround)
         {
-            _playerRb.AddForce(force, ForceMode.Impulse);
-            _playerAnim.SetTrigger("Jump");
-
             isOnGround = false;
+            isJumping = true;
+
+            if(isJumping)
+            { 
+                _playerAnim.SetTrigger("Jump");
+                // _playerRb.AddForce(force, ForceMode.Impulse);
+            }
+        }
+        //release space to start falling
+         if (Input.GetKeyUp(KeyCode.Space))
+        {
+            isFalling = true;
+            isJumping = false;
+            if(isFalling)
+            { 
+                _playerAnim.SetBool   ("Fall", true);
+            }
         }
     }
+    void FixedUpdate()
+     {
+          if(isJumping)
+            { 
+                _playerRb.AddForce(Vector3.up * force, ForceMode.Force);
+            }
+
+            if (isFalling || isOnGround)
+            {
+                _playerRb.AddForce(Vector3.down * forceDown *_playerRb.mass);
+            }
+     }
     
      private void OnCollisionEnter (Collision collision)
     {
         if (collision.gameObject.CompareTag ("Ground"))
         {
             isOnGround = true; 
+            if(isFalling)
+            {
+                _playerAnim.SetBool ("Fall", false);
+                isFalling = false;
+            }
         } 
     }
 }
