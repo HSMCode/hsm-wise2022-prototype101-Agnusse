@@ -10,7 +10,10 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public float turnSpeed;
     public Vector3 force;
-    public bool isJumping = false;
+
+
+
+    public bool isOnGround = false;
 
     private Animator _playerAnim;
     private Rigidbody _playerRb;
@@ -45,23 +48,20 @@ public class PlayerController : MonoBehaviour
             _playerAnim.SetBool("Walk", false);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space)&& isOnGround)
         {
-            if (!isJumping)
-            {
-                _playerRb.AddForce(force, ForceMode.Impulse);
-                _playerAnim.SetTrigger("Jump");
-                isJumping = true;
-            }
-            
+            _playerRb.AddForce(force, ForceMode.Impulse);
+            _playerAnim.SetTrigger("Jump");
+
+            isOnGround = false;
         }
     }
-
-     private void OnTriggerEnter (Collider other)
+    
+     private void OnCollisionEnter (Collision collision)
     {
-        if(other.name == Ground.name)
+        if (collision.gameObject.CompareTag ("Ground"))
         {
-          isJumping = false; 
-        }
+            isOnGround = true; 
+        } 
     }
 }
