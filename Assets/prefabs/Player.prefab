@@ -1403,6 +1403,7 @@ GameObject:
   - component: {fileID: 4081943965068279104}
   - component: {fileID: 4081943965059207840}
   - component: {fileID: 3228854125984393373}
+  - component: {fileID: 8263745239233764686}
   m_Layer: 0
   m_Name: characterMedium
   m_TagString: Untagged
@@ -1436,7 +1437,7 @@ Animator:
   m_GameObject: {fileID: 4081943965068566880}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 2db7e17401e08b94697ecd7acce75ab1, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a7e322d0b4ff9864fbd0104327ac62a1, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -1459,6 +1460,27 @@ CapsuleCollider:
   m_Height: 4.1181893
   m_Direction: 1
   m_Center: {x: 0, y: 1.7709625, z: 0}
+--- !u!114 &8263745239233764686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4081943965068566880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c08267c3d9574148b525a3083d1e024, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Ground: {fileID: 0}
+  horizontalInput: 0
+  forwardInput: 0
+  speed: 10
+  turnSpeed: 200
+  gravityScale: 0
+  isInTheAir: 0
+  isFalling: 0
+  force: {x: 0, y: 0, z: 0}
 --- !u!1 &4081943965068566882
 GameObject:
   m_ObjectHideFlags: 0
@@ -2064,6 +2086,10 @@ PrefabInstance:
     - target: {fileID: 3023363473631054602, guid: 569dc8afbe6aa324cb6eb7c76837dc32, type: 3}
       propertyPath: m_Name
       value: characterMedium
+      objectReference: {fileID: 0}
+    - target: {fileID: 3023363473631054602, guid: 569dc8afbe6aa324cb6eb7c76837dc32, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 3023363473631090474, guid: 569dc8afbe6aa324cb6eb7c76837dc32, type: 3}
       propertyPath: m_RootOrder
