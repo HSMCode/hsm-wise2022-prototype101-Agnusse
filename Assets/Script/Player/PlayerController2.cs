@@ -20,6 +20,27 @@ public class PlayerController2 : MonoBehaviour
     private Animator _playerAnim;
     private Rigidbody _playerRb;
 
+
+
+
+
+    //
+
+
+
+    // public bool jumpCancelled;
+    // public float jumpTimer;
+    // public float jumpButtonPressedTime;
+
+
+
+    //
+
+
+
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,6 +75,38 @@ public class PlayerController2 : MonoBehaviour
                 isInTheAir = true;
             }
         }
+
+        //
+  
+
+
+
+
+        
+        // if (isJumping)
+        // {
+        //     jumpTimer += Time.deltaTime;
+        //     if(Input.GetKeyup(Keycode.Space))
+        //     {
+        //         jumpCancelled = true;
+
+        //         isJumping = false;
+        //         isFalling = true;
+        //     }
+        //     if( jumpTimer > jumpButtonPressedTime)
+        //     {
+        //         isJumping = false;
+        //     }
+        // }
+        
+
+
+
+
+
+
+        //
+
 
         if (isInTheAir && _playerRb.velocity.y < 0 && !isFalling){
             isFalling = true;
