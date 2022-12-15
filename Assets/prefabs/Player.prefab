@@ -1403,7 +1403,7 @@ GameObject:
   - component: {fileID: 4081943965068279104}
   - component: {fileID: 4081943965059207840}
   - component: {fileID: 3228854125984393373}
-  - component: {fileID: 8263745239233764686}
+  - component: {fileID: 3623855664698944364}
   m_Layer: 0
   m_Name: characterMedium
   m_TagString: Untagged
@@ -1419,7 +1419,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4081943965068566880}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.26761648, y: -1.7615118, z: 4.788427}
+  m_LocalPosition: {x: 0.26761648, y: 0.01, z: 0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4081943965068279106}
@@ -1460,27 +1460,6 @@ CapsuleCollider:
   m_Height: 4.1181893
   m_Direction: 1
   m_Center: {x: 0, y: 1.7709625, z: 0}
---- !u!114 &8263745239233764686
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4081943965068566880}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c08267c3d9574148b525a3083d1e024, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Ground: {fileID: 0}
-  horizontalInput: 0
-  forwardInput: 0
-  speed: 10
-  turnSpeed: 200
-  gravityScale: 0
-  isInTheAir: 0
-  isFalling: 0
-  force: {x: 0, y: 0, z: 0}
 --- !u!1 &4081943965068566882
 GameObject:
   m_ObjectHideFlags: 0
@@ -2101,11 +2080,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3023363473631090474, guid: 569dc8afbe6aa324cb6eb7c76837dc32, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.7615118
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 3023363473631090474, guid: 569dc8afbe6aa324cb6eb7c76837dc32, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.788427
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 3023363473631090474, guid: 569dc8afbe6aa324cb6eb7c76837dc32, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2137,3 +2116,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 569dc8afbe6aa324cb6eb7c76837dc32, type: 3}
+--- !u!114 &3623855664698944364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4081943965068566880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fa62ad55adcb6d40b832b2b62ed972a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turnSpeed: 150
+  speed: 15
+  force: 100
+  gravityModifier: 1
+  isOnGround: 0
+  isJumping: 0
+  isFalling: 0
+  isLanding: 0
+  jumpCancelled: 0
+  jumpTimer: 0
+  jumpButtonPressedTime: 1
