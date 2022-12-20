@@ -5,63 +5,75 @@ using UnityEngine.UI;
 
 public class UpdateScoreTimer : MonoBehaviour
 {
+    // variable for GameUIs
     private GameObject _gameUI;
     private GameObject _gameOverUI;
 
-    //variables for score
+    // variables for score
     private Text scoreUI;
     public string scoreText = "Punktestand: ";
     private int currentScore = 0;
-    public int addScore = 1; 
-    public int winScore = 5; 
+    public int addScore = 1;
+    public int winScore = 5;
 
-    //variables for timer
+    //gameOver Variables for Score
+    private Text scoreGameOverUI;
+
+    // variables for timer
     private Text timerUI;
     public string timerText = "Countdown: ";
-    public float countRemaining = 10f;
-    private bool countingDown;
+    public float countRemaining = 30f;
+    private bool countingDown = true;
 
-    //variables for result ui
+    // variables for result ui
     private Text resultUI;
     public string resultLost = "You lost!";
-    public string resultWin= "You won!";
+    public string resultWin = "You won!";
 
-    //variables for game overf
-    public bool gameOver;
+    // variables for game over
+    public bool gameOver = false;
     private bool gameWon;
     private bool gameLost;
 
-    // Start is called before the first frame update
+
     void Start()
     {
-        _gameUI = GameObject.Find ("Game");
-        _gameOverUI = GameObject.Find ("GameOver");
+        _gameUI = GameObject.Find("Game");
+        _gameOverUI = GameObject.Find("GameOver");
 
         scoreUI = GameObject.Find("Score").GetComponent<Text>();
         timerUI = GameObject.Find("Timer").GetComponent<Text>();
         resultUI = GameObject.Find("Result").GetComponent<Text>();
 
-         _gameUI.SetActive(true);
-        _gameOverUI.SetActive(false);
+        scoreGameOverUI = GameObject.Find("ScoreGameOver").GetComponent<Text>();
 
+        _gameUI.SetActive(true);
+        _gameOverUI.SetActive(false);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        CountdownTimer ();
+        CountdownTimer();
 
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (gameOver && Input.GetKeyDown("r"))
         {
-             currentScore += addScore;
-             scoreUI.text = scoreText + currentScore;
+            restartValues();
+            gameOver = false;
         }
+
+        // if(Input.GetKeyDown(KeyCode.Space))
+        // {
+        //     currentScore += addScore;
+        //     scoreUI.text = scoreText + currentScore.ToString();            
+        // }
     }
+
+
     private void CountdownTimer()
     {
-        if (countingDown)
+        if(countingDown)
         {
-            if(countRemaining > 0 )
+            if(countRemaining > 0)
             {
                 countRemaining -= Time.deltaTime;
                 timerUI.text = timerText + Mathf.Round(countRemaining).ToString();
@@ -69,40 +81,68 @@ public class UpdateScoreTimer : MonoBehaviour
             else 
             {
                 countRemaining = 0;
-                timerUI.text = timerText + countRemaining;
+                timerUI.text = timerText + countRemaining.ToString();
                 countingDown = false;
 
-                CheckGameOver ();
+                CheckGameOver();
             }
         }
     }
 
-    private void CheckGameOver ()
+
+
+    private void CheckGameOver()
     {
-        //GameOver WIN
-        if (currentScore >= winScore)
+        // GameOver WIN
+        if(currentScore >= winScore)
         {
-            gameWon = true; 
+            gameWon = true;
+            gameOver = true;
+
             resultUI.text = resultWin;
             resultUI.color = Color.green;
-            Debug.Log ("WIN" + gameWon);
         }
-        //GameOver LOST
-        else if (currentScore < winScore && !countingDown)
+        // GameOver LOST
+        else if(currentScore < winScore && !countingDown)
         {
             gameLost = true;
+            gameOver = true;
 
             resultUI.text = resultLost;
             resultUI.color = Color.red;
-
-            Debug.Log (gameLost);
         }
+
+        scoreGameOverUI.text = scoreText + currentScore.ToString();
+
+        // Change the UI to display the GameOver screen
         if(gameOver)
         {
-            _gameUI.SetActive (false);
+            _gameUI.SetActive(false);
             _gameOverUI.SetActive(true);
-
         }
+
+    }
+
+    public void addOne()
+    {
+        currentScore += addScore;
+        scoreUI.text = scoreText + currentScore.ToString();
+    }
+
+    private void restartValues()
+    {
+        currentScore = 0;
+        countRemaining = 30f;
+        countingDown = true;
+
+        gameLost = false;
+        gameWon = false;
+
+        _gameUI.SetActive(true);
+        _gameOverUI.SetActive(false);
+
+        scoreUI.text = scoreText + currentScore.ToString();
     }
 }
+
 
