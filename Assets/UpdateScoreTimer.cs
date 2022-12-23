@@ -142,6 +142,12 @@ public class UpdateScoreTimer : MonoBehaviour
         _gameOverUI.SetActive(false);
 
         scoreUI.text = scoreText + currentScore.ToString();
+    }#
+
+    //game over 
+    private IEnumerator Countdown ()
+    { 
+        
     }
 }
 

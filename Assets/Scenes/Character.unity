@@ -870,7 +870,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 795745193}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &795745193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5079,10 +5091,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 427753416969721658, guid: 95be9e24d62fb89479e16729fc79522c, type: 3}
-      propertyPath: m_Constraints
-      value: 84
-      objectReference: {fileID: 0}
     - target: {fileID: 4502410515183044546, guid: 95be9e24d62fb89479e16729fc79522c, type: 3}
       propertyPath: m_RootOrder
       value: 6
