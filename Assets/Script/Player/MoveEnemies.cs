@@ -1,15 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
-public class MoveEnemy : MonoBehaviour
+public class MoveEnemies : MonoBehaviour
 {
     private Rigidbody _enemyRb;
     private GameObject _player;
+    private UpdateScoreTimer _updateScoreTimerScript;
 
     [SerializeField] float speed;
-
-    private EnemiesCounter _enemiesDestroyedCounter;
 
     
     void Start()
@@ -19,9 +20,7 @@ public class MoveEnemy : MonoBehaviour
         // make sure to set the tag "Player" on your player character for this to work
         _player = GameObject.FindWithTag("Player");
 
-
-        // GameObject sCRIPT ADD COUNTER
-        _enemiesDestroyedCounter = GameObject.Find("EnemiesDestroyedCounter").GetComponent<EnemiesCounter>();
+        _updateScoreTimerScript = GameObject.Find("UpdateScore").GetComponent<UpdateScoreTimer>();
     }
     
     void FixedUpdate()
@@ -30,8 +29,18 @@ public class MoveEnemy : MonoBehaviour
         _enemyRb.AddForce((_player.transform.position - transform.position).normalized * speed);
         // Debug.Log("Player: " + _player.transform.position + "Enemy: " + transform.position);
     }
-    
-    
+
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if(other.gameObject.CompareTag("Player"))
+        {
+            _updateScoreTimerScript.destroyedEnemies++;
+            Destroy(this.gameObject);
+        }
+    }
+
+
     // For debugging we can add gizmos to help visualise depth and distance a bit better
     void OnDrawGizmosSelected()
     {
@@ -40,15 +49,6 @@ public class MoveEnemy : MonoBehaviour
             // Draws a blue line from this transform to the target
             Gizmos.color = Color.blue;
             Gizmos.DrawLine(transform.position, _player.transform.position);
-        }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.gameObject.CompareTag("Player"))
-        {
-            Destroy(gameObject);
-            _enemiesDestroyedCounter.addOne();
         }
     }
 }

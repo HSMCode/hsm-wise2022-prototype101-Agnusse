@@ -2,36 +2,60 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class countdown : MonoBehaviour
+public class Countdown : MonoBehaviour
 {
     private bool _canStart;
-     void Start()
+    public int countdown = 3;
+
+
+    void Start()
     {
-         _canStart = true;
+        _canStart = true;
     }
 
-    void Update ()
+    void Update()
     {
-        if (Input.GetKeyDown(KeyCode.C)&& _canStart)
+        if (Input.GetKeyDown(KeyCode.C) && _canStart)
         {
-            StartCoroutine( routine: CountingDown());
+            StartCoroutine(CountingDown());
         }
-        else if (Input.GetKeyDown(KeyCode.C)&& _canStart) 
+        else if(Input.GetKeyDown(KeyCode.C) && !_canStart)
         {
-            Debug.Log( message:"wait for Coroutine ready to start again: ")
+            Debug.Log("Wait for Coroutine to be ready again!");
         }
     }
 
-
-  
-    //game over 
-    private IEnumerator Countingdown ()
-    { 
-         _canStart = false;
-         
-         Debug.Log( message:"Waiting for seconds of countdown: " + couzntDown)
-         yield return new(WaitForSeconds(3));
-         Debug.Log( message:"Coroutine ready to start again: ")
-         _canStart = true;
+    // coroutine countdown to test
+    private IEnumerator CountingDown()
+    {
+        _canStart = false;
+    
+        Debug.Log("Waiting for seconds of countdown: " + countdown);
+    
+        yield return new WaitForSeconds(countdown);
+    
+        Debug.Log("Coroutine ready to start again.");
+    
+        _canStart = true;
     }
+
+    // private IEnumerator CountingDown()
+    // {
+    //     _canStart = false;
+    //     Debug.Log("Waiting for seconds of countdown: " + countdown);
+    //
+    //     int i = countdown;
+    //     for (; i > 0; i--)
+    //     {
+    //         Debug.Log("Ready in " + i);
+    //         
+    //         yield return new WaitForSeconds(1f);
+    //
+    //         yield return null;
+    //     }
+    //
+    //     Debug.Log("Coroutine ready to start again.");
+    //     _canStart = true;
+    // }
+
 }
