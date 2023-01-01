@@ -129,4 +129,10 @@ public class UpdateScoreTimer : MonoBehaviour
 
     }
     
+    public void AddEnemiesCounter()
+    {
+        destroyedEnemies++;
+        scoreUI.text = scoreText + destroyedEnemies.ToString();   
+    }
+
 }

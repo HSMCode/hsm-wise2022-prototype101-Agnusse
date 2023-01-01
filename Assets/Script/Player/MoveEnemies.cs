@@ -20,7 +20,7 @@ public class MoveEnemies : MonoBehaviour
         // make sure to set the tag "Player" on your player character for this to work
         _player = GameObject.FindWithTag("Player");
 
-        _updateScoreTimerScript = GameObject.Find("UpdateScore").GetComponent<UpdateScoreTimer>();
+        _updateScoreTimerScript = GameObject.Find("UpdateScoreTimer").GetComponent<UpdateScoreTimer>();
     }
     
     void FixedUpdate()
@@ -35,7 +35,7 @@ public class MoveEnemies : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
-            _updateScoreTimerScript.destroyedEnemies++;
+            _updateScoreTimerScript.AddEnemiesCounter();
             Destroy(this.gameObject);
         }
     }
