@@ -373,7 +373,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73d4a2355ed354945bc6a9f91074daf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Decoy: {fileID: 4303707799102839296, guid: 258c43030a955c240a548dff797f0114, type: 3}
+  Decoy: {fileID: 0}
   spawnPositionX: 15
   spawnPositionZ: 15
   spawnAmount: 10
